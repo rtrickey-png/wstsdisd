@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Watch Traveler</title>
+    <link rel="stylesheet" type="text/css" href="../css/watch_style.css">
+  </head>
+  <body>
+    <header id="main-header">
+        <div class="container">
+            <h1 >Gilman Follow-on Service Project</h1>
+        </div>
+    </header>
+
+    <nav id="navbar">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../aframe/index.html" target="_blank">Experience</a></li>
+                <li><a href="index.html">Watch</a></li>
+                <li><a href="../read/index.html">Read</a></li>
+                <li><a href="../listen/index.html">Listen</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div id="spanish-film" class="column">
+          <h1>Watch the Spanish verison of the film:</h1>
+          <video id="spanish-video" controls preload="auto" width="450"
+          >
+            <source src="../aframe/assets/video/esp-comp.mp4"
+            type="video/mp4">
+            <audio id="spanish-audio" preload="auto">
+              <source src="../aframe/assets/sound/08012023_poema_esp.mp3" type="audio/mpeg"/>
+            </audio>
+          </video>
+          <script>
+            let vidEsp = document.getElementById("spanish-video");
+            let audEsp = document.getElementById("spanish-audio");
+            vidEsp.onplay = () => { audEsp.play(); }
+            vidEsp.onpause = () => { audEsp.pause(); }
+            vidEsp.onseeking = () => { audEsp.currentTime = vidEsp.currentTime; }
+          </script>
+        </div>
+        <div id="english-film" class="column">
+          <h1>Watch the English verison of the film:</h1>
+          <video id="english-video" controls width="450">
+            <source src="../aframe/assets/video/ing-comp.mp4"
+            type="video/mp4">
+            <audio id="english-audio" preload="auto">
+              <source src="../aframe/assets/sound/08012023_poema_ing.mp3" type="audio/mpeg"/>
+            </audio>
+          </video>
+          <script>
+            let vidIng = document.getElementById("english-video");
+            let audIng = document.getElementById("english-audio");
+            vidIng.onplay = () => { audIng.play(); }
+            vidIng.onpause = () => { audIng.pause(); }
+            vidIng.onseeking = () => { audIng.currentTime = vidIng.currentTime; }
+          </script>
+        </div>
+    </div>
+
+    </div>
+    <footer id="main-footer">
+    </footer>
+  </body>
+</html>

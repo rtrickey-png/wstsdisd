@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>English Version of Poem</title>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="./scripts/play-pause-controls-agile.js"></script>
+    <script src="scripts/link-controls.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="sky-ing" src="./assets/img/stellarium-bcn-18-07-22.png" alt="Barcelona sky the night of July 18th 2022"/>
+        <img id="sky-sd" src="./assets/img/stellarium-sd-03-08-22.png" alt="Sky in San Diego upon my return"/>
+        <video id="vid-ing" preload="auto" loop="false"  src="./assets/video/esp-comp.mp4"></video>
+        <audio id="aud-ing" preload="auto" loop="false" src="./assets/sound/08012023_poema_ing.mp3"></audio>
+      </a-assets>
+
+      <a-entity id="rotating-sky">
+        <a-sky id="sky" src="#sky-ing"
+          animation="property: object3D.rotation.y;
+                     to: 360;
+                     dur:600000;
+                     loop: true"></a-sky>
+      </a-entity>
+
+      <!-- camera with look controls-->
+    		<a-entity camera look-controls wasd-controls>
+    			<a-entity
+            cursor="fuse: true; fuseTimeout: 888"
+      			position="0 0 -1"
+            raycaster="interval: 1000; objects: .clickable; showLine: true"
+      			geometry="primitive: ring; radiusInner: 0.015; radiusOuter: 0.017"
+      			material="color: white; shader: flat">
+    		</a-entity>
+    	</a-entity>
+
+
+      <!-- cube that plays/pauses English audio and poem -->
+        <a-entity id="controls"
+          class="clickable"
+          geometry="primitive: box"
+          material="color: #c8102e"
+          scale="11 11 11"
+          position="0 -555 -49"
+          play-pause-controls-agile
+          animation="property: position; to: 0 -35 -50; dur: 30000; easing: linear; loop: false"
+          >
+          <a-entity id="instructions-ing"
+            geometry="primitive: plane; height: 0.5; width: 3"
+            material="color: black"
+            text="width: 3; value: Hover over the cube to play/pause the video.; align: center"
+            rotation="0 -180 0"
+            position="0 0 -0.55"
+            align="center"
+            anchor="center"
+            ></a-entity>
+        </a-entity>
+
+        <!-- English audio+video, Spanish subtitles -->
+        <a-entity id="vid-controls-ing"
+        position="5 -555 -95"
+        animation="property: position; to: 5 2 -95; dur: 30000; easing: linear; loop: false">
+        >
+        <a-video src="#vid-ing"
+          show-when-loaded
+          width="160"
+          height="90"
+          position = "5 2 -90"
+          rotation="0 -180 0"
+          auotplay="true"
+          sound="src: #aud-ing; autoplay: true; refDistance: 33; rolloffFactor: 3"
+        ></a-video>
+      </a-entity>
+
+      <!-- link to song world -->
+      <a-link  class="clickable" position="-6 0 0" rotation="0 -70 0"
+      href="wstsdisd.html" title="Return to San Diego" image="#sky-sd"></a-link>
+
+      </a-scene>
+  </body>
+</html>

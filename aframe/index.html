@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome, Traveler</title>
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/tone@14.7.77/build/Tone.js"></script>
+  <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+  <script src="./scripts/synth.js"></script>
+  <script src="./scripts/distortion.js"></script>
+  <script src="./scripts/play-pause-controls.js"></script>
+  <script src="./scripts/show-when-loaded.js"></script>
+  <script src="./scripts/link-controls.js"></script>
+  <script src="./scripts/camera-distance.js"></script>
+  <!-- <script src="./scripts/webaudio.js"></script> -->
+</head>
+<body>
+  <a-scene>
+    <a-assets>
+      <!-- <img id="wood1" src="./assets/img/wood.png" alt=""/>
+      <img id="wood2" src="./assets/img/wood2.jpg" alt=""/> -->
+      <img id="sky1" src="./assets/img/stellarium-2.jpg" alt="sky from Barcelona 7-4-2022"/>
+      <audio id="aud-trees" preload="auto" loop="true" src="./assets/sound/el viento.mp3"></audio>
+      <audio id="aud-rest" preload="auto" loop="true" src="./assets/sound/restaurante osaka.mp3"></audio>
+      <audio id="intro" preload="auto" loop="true" src="./assets/sound/wstsdisd-intro-3-22-23.mp3"></audio>
+    </a-assets>
+
+    <!-- background image -->
+    <a-entity id="rotating-sky">
+      <a-sky id="sky" src="#sky1"
+        animation="property: object3D.rotation.y;
+                   to: 360;
+                   dur:600000;
+                   loop: true"></a-sky>
+    </a-entity>
+
+    <!-- particle system -->
+    <!-- <a-entity position="0 2.25 -15" particle-system="color: #EF0000,#44CC00"></a-entity> -->
+
+    <!-- <a-sky color="black"></a-sky> -->
+
+    <!-- camera with look controls-->
+  		<a-entity id="camera" camera look-controls wasd-controls>
+  			<a-entity
+          cursor="fuse: true; fuseTimeout: 444"
+          raycaster="interval: 1000; objects: .clickable; showLine: true"
+    			position="0 0 -1"
+    			geometry="primitive: ring; radiusInner: 0.015; radiusOuter: 0.017"
+    			material="color: white; shader: flat">
+  		</a-entity>
+  	</a-entity>
+
+    <!-- floor plane -->
+    <a-plane position="0 -2 0" color="#27004D" material="" geometry="" rotation="-90 0 0" scale="10 10 1"></a-plane>
+
+    <!-- table -->
+    <!-- <a-entity id="table"
+      animation="property: object3D.scale.z;
+        to: 35;
+        loop: true;
+        dur: 600000;
+        elasticity: 20;
+        easing: easeInSine;"
+      position="0 -33 0">
+      <a-cylinder
+        src="#sky2"
+        rotaion="0 45 0"
+        position="-2.6 -10 0"
+        segments-radial="4"
+        width="40"
+        length="30"
+        height="2"
+        scale="70 1 50"
+        material=""
+        geometry="primitive: box"
+        rotation=""></a-cylinder>
+      <a-cylinder
+        position="-33 -30 -22"
+        rotation="0 45 0"
+        radius="4"
+        segments-radial="4"
+        src="#wood2"
+        scale=".4 40 .4"
+        geometry=""></a-cylinder>
+      <a-cylinder
+        position="28 -30 -22"
+        rotation="0 45 0"
+        radius="4"
+        segments-radial="4"
+        src="#wood2"
+        scale=".4 40 .4"
+        geometry=""></a-cylinder>
+      <a-cylinder
+        position="28 -30 22"
+        rotation="0 -45 0"
+        radius="4"
+        segments-radial="4"
+        src="#wood2"
+        scale=".4 40 .4"
+        geometry=""></a-cylinder>
+      <a-cylinder
+        position="-33 -30 22"
+        rotation="0 45 0"
+        radius="4"
+        segments-radial="4"
+        src="#wood2"
+        scale=".4 40 .4"
+        geometry=""></a-cylinder>
+    </a-entity> -->
+
+    <!-- tone.js synth components -->
+    <!-- <a-entity id="synth1"
+      synth="note: C#4"
+      geometry="primitive: sphere"
+      material="color: #58508d"
+      radius=".7"
+      position="-1 0.5 -3"
+      ></a-entity>
+    <a-entity id="synth2"
+      synth="note: F4"
+      geometry="primitive: sphere"
+      material="color: #ff6361"
+      position="0 1.25 -5"
+      radius=".6"
+      ></a-entity>
+    <a-entity id="synth3"
+      synth="note: G#2"
+      geometry="primitive: sphere"
+      material="color: #bc5090"
+      radius=".5"
+      position="1 0.75 -3"
+      ></a-entity> -->
+
+      <a-box class="clickable" synth="note: E4" position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"
+        animation="property: opacity; from: 0.5; to: 1; dur: 500; startEvents:click">
+      </a-box>
+      <a-sphere class="clickable" synth="note: C4" position="0 1.25 -5" radius="1.25" color="#EF2D5E"
+        animation="property: opacity; from: 0.5; to: 1; dur: 500; startEvents:click">
+      </a-sphere>
+      <a-cylinder class="clickable" synth="note: G3" position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"
+        animation="property: opacity; from: 0.5; to: 1; dur: 500; startEvents:click">
+      </a-cylinder>
+
+
+      <!-- tone.js distortion component -->
+      <!-- <a-sphere class="clickable" distortion position="0 .5 4" radius="1.25" color="#EFFD50"
+        animation="property: opacity; from: 0.5; to: 1; dur: 500; startEvents:click">
+      </a-sphere> -->
+      <a-sphere class="clickable" camera-distance position="3 .5 4" radius=".70" color="#F933B4"
+        animation="property: opacity; from: 0.5; to: 1; dur: 500; startEvents:click">
+      </a-sphere>
+
+
+    <a-text value="Around you spins the night sky in Barcelona\n the first night of my summer classes\n7-4-2022"
+    text="align: center"
+    rotation="0 90 0"
+    position="-30 5 0"
+    scale="3 3 1">
+    </a-text>
+
+    <!-- link components for user interaction -->
+
+    <a-link class="clickable" position="6 0 4" rotation="0 70 0"
+    href="video-ingles.html" title="English Version" ></a-link>
+
+    <!-- <a-link position="0 -25 -10" rotation="0 20 0"
+    href="video-espanol.html" title = "Versión Española" image="#sky2"></a-link> -->
+
+    <a-link  class="clickable" position="6 0 -4" rotation="0 -70 0"
+    href="video-espanol.html" title="Spanish Version" image=""></a-link>
+
+    <!-- link to solar system test -->
+    <a-link  class="clickable" position="10 0 -10" rotation="0 -70 0"
+    href="solar-system-github.html" title="Solar System Test" image=""></a-link>
+
+    <!-- <a-text value="Expanda debajo de tus pies tambien."
+    text="align: center"
+    rotation="0 -90 0"
+    position="30 5 0"
+    scale="3 3 1">
+        </a-text> -->
+
+    <!-- ambient sound files -->
+    <!-- <a-sound id="tree-amb" src="#aud-trees"  autoplay="true" position="0 20 0"></a-sound> -->
+    <a-sound id="rest-amb" src="#aud-rest" volume=".6" autoplay="true" position="0 -10 0"></a-sound>
+
+  </a-scene>
+</body>
+</html>
