@@ -2,26 +2,34 @@
 <html>
 <head>
   <title>Who Set the Sun Down in San Diego?</title>
-  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-  <script src="https://unpkg.com/tone@14.7.77/build/Tone.js"></script>
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <!-- <script src="https://unpkg.com/tone@14.7.77/build/Tone.js"></script> -->
   <script src="./scripts/play-pause-controls.js"></script>
-  <script src="./scripts/grain.js"></script>
+  <!-- <script src="./scripts/grain.js"></script> -->
   <script src="./scripts/show-when-loaded.js"></script>
   <script src="./scripts/link-controls.js"></script>
-  <script src="./scripts/synth.js"></script>
-  <script src="./scripts/distortion-intv.js"></script>
-  <script src="./components/scaler.js"></script>
+  <!-- <script src="./components/synth.js"></script> -->
+  <!-- <script src="./scripts/distortion-intv.js"></script> -->
+  <script src="./components/mute-control.js"></script>
+  <script src="./components/start-stop-song.js"></script>
 </head>
 <body>
-  <a-scene stats>
+  <a-scene >
     <a-assets>
       <!-- <img id="wood1" src="./assets/img/wood.png" alt=""/>
       <img id="wood2" src="./assets/img/wood2.jpg" alt=""/> -->
       <img id="sky-sd" src="./assets/img/stellarium-sd-03-08-22.png" alt="sky from San Diego 8-3-2022"/>
-      <audio id="intro" preload="auto" loop="true" src="./assets/sound/wstsdisd-intro-3-22-23.mp3"></audio>
-      <audio id="aud-trees" preload="auto" loop="true" src="./assets/sound/el viento.mp3"></audio>
+      <!-- <audio id="intro" preload="auto" loop="true" src="./assets/sound/wstsdisd-intro-3-22-23.mp3"></audio> -->
+      <!-- <audio id="aud-trees" preload="auto" autoplay="false" loop="true" src="./assets/sound/el viento.mp3"></audio> -->
+      <audio id="drum-track" autoplay="false" preload="auto" loop="false" src="./assets/sound/wstsdisd/DRUMS.mp3"></audio>
+      <audio id="bass-track" autoplay="false" preload="auto" loop="false" src="./assets/sound/wstsdisd/BASS.mp3"></audio>
+      <audio id="vox-track" autoplay="false" preload="auto" loop="false" src="./assets/sound/wstsdisd/VOCALS.mp3"></audio>
+      <audio id="keys-track" autoplay="false" preload="auto" loop="false" src="./assets/sound/wstsdisd/KEYS.mp3"></audio>
+      <audio id="synths-track" autoplay="false" preload="auto" loop="false" src="./assets/sound/wstsdisd/SYNTHS.mp3"></audio>
+      <audio id="fx-track" autoplay="false" preload="auto" loop="false" src="./assets/sound/wstsdisd/FX.mp3"></audio>
+      <audio id="ruidos-track" autoplay="false" preload="auto" loop="false" src="./assets/sound/wstsdisd/RUIDOS.mp3"></audio>
       <!-- <audio id="aud-rest" preload="auto" loop="true" src="./assets/sound/restaurante osaka.mp3"></audio> -->
-      <a-asset-item id="sun" src="./assets/obj/the_sun/scene.gltf"></a-asset-item>
+      <!-- <a-asset-item id="sun" src="./assets/obj/the_sun/scene.gltf"></a-asset-item> -->
     </a-assets>
 
     <!-- background image -->
@@ -34,14 +42,14 @@
     </a-entity>
 
     <!-- sun model -->
-    <a-entity audio-visualizer="src:#intro" gltf-model="#sun" position="0 3 0"></a-entity>
+    <!-- <a-entity audio-visualizer="src:#intro" gltf-model="#sun" position="0 3 0"></a-entity> -->
 
     <!-- lighting -> test -->
     <!-- <a-entity light="type: directional; color: #ffffff; intensity:0.5"
               position="0 3s 0"></a-entity> -->
 
     <!-- box to test synth patch -->
-    <a-box id="testbox" synth="note: A4" class="clickable" position="-1 0.5 -3" rotation="0 90 0" color="#4CC3D9"
+    <!-- <a-box id="testbox" synth="note: A4" class="clickable" position="-1 0.5 -3" rotation="0 90 0" color="#4CC3D9"
       animation="property: opacity; from: 0.5; to: 1; dur: 500; startEvents:click"
       sound="src: #intro; autoplay: true">
     </a-box>
@@ -50,8 +58,182 @@
       class="clickable" position="-3 0.5 -3" rotation="0 90 0" color="#9CC3D9"
       animation="property: opacity; from: 0.5; to: 1; dur: 500; startEvents:click"
       sound="src: #intro; autoplay: false">
-    </a-box>
+    </a-box> -->
 
+    <a-entity position="0 5 -15">
+        <a-box id="control-cube" start-stop-song class="clickable"
+        material="color: #c8102e" scale="4 4 4"></a-box>
+      </a-entity>
+
+ <!-- audio-controls="soundIndex: 0; color: indigo" -->
+ <!-- sound="src: #drums; autoplay: false; volume: 1; on: playsong" -->
+    <a-entity id="sonic-system">
+      <a-entity id="Sun">
+      <a-sphere id="drum-orb" mute-control="soundId: #drums; color: indigo"
+        class="clickable" scale="3 3 3" position="0 1 0">
+        <a-sound id="drums" src="#drum-track" sound=""></a-sound>
+      </a-sphere>
+    <a-entity>
+
+      <a-entity id="Mercury"
+        animation="property: rotation;
+          to: 0 360 0;
+          dur: 144600;
+          loop: true;
+          easing: linear">
+          <!-- audio-controls="soundIndex: 1; color: blue" -->
+          <!-- sound="src: #bass; autoplay: false; volume: 1; on: playsong" -->
+        <a-sphere id="planet-mercury" mute-control="soundId: #bass; color: blue"
+          class="clickable"
+          scale=".4 .4 .4" position="0 1 -4"
+        animation="property: object3D.rotation.y;
+          to: 360;
+          dur: 586666.67;
+          loop: true;
+          easing: linear"
+        ></a-sphere>
+        <a-sound id="bass" src="#bass-track" sound></a-sound>
+      </a-entity>
+
+      <a-entity id="Venus"
+        animation="property: rotation;
+          to: 0 360 0;
+          dur: 37200;
+          loop: true;
+          easing: linear">
+          <!-- audio-controls="soundIndex: 2; color: green" -->
+          <!-- sound="src: #vox; autoplay: false; volume: 1; on: playsong" -->
+        <a-sphere id="planet-venus" mute-control="soundId: #vox; color: green"
+          class="clickable"
+          scale=".9 .9 .9" position="0 1 -7"
+        animation="property: object3D.rotation.y;
+          to: 360;
+          dur: 2430000;
+          loop: true;
+          easing: linear"
+          ></a-sphere>
+          <a-sound id="vox" src="#vox-track" ></a-sound>
+      </a-entity>
+
+      <a-entity id="Earth"
+        animation="property: rotation;
+          to: 0 360 0;
+          loop: true;
+          dur: 60000;
+          easing: linear">
+          <!-- audio-controls="soundIndex: 3; color: yellow" -->
+          <!-- sound="src: #keys; autoplay: false; volume: 1; on: playsong" -->
+        <a-sphere id="planet-earth" mute-control="soundId: #keys; color: yellow"
+        class="clickable"
+        scale="1 1 1" position="0 1 -10"
+        animation="property: object3D.rotation.y;
+          to: 360;
+          dur: 10000;
+          loop: true;
+          easing: linear"
+        ></a-sphere>
+        <a-sound id="keys" src="#keys-track" ></a-sound>
+        <!-- <a-entity id="Moon" position="1.276 1.5 -10"
+          animation="property: rotation;
+            from: 0 0 0;
+            to: 0 360 0;
+            dur: 4484.48;
+            loop: true;
+            easing: linear">
+            changing the position tag on the moon changes the rotational radius of the moon
+        <a-sphere id="obj-moon" scale="0.25 0.25 0.25" position="1.276 0 1.276"></a-sphere>
+
+        </a-entity> -->
+        <!-- <a-sphere id="Moon" src="#moon" scale=".25 .25 .25" position="0 1.5 -10" -->
+        <!-- ></a-sphere> -->
+      </a-entity>
+
+
+      <a-entity id="Mars"
+        animation="property: rotation;
+          to: 0 360 0;
+          loop: true;
+          dur: 112800;
+          easing: linear"
+        >
+        <!-- audio-controls="soundIndex: 4; color: orange" -->
+        <!-- sound="src: #synths; autoplay: false; volume: 1; on: playsong" -->
+        <a-sphere id="planet-mars" mute-control="soundId: #synths; color: orange"
+        class="clickable"
+        scale=".5 .5 .5" position="0 1 -15"
+        animation="property: object3D.rotation.y;
+          to: 360;
+          dur: 10416.67;
+          loop: true;
+          easing:linear"
+        ></a-sphere>
+        <a-sound id="synths" src="#synths-track"></a-sound>
+
+      </a-entity>
+
+      <a-entity id="Jupiter"
+        animation="property: rotation;
+          to: 0 360 0;
+          loop: true;
+          dur: 711600;
+          easing: linear">
+          <!-- audio-controls="soundIndex: 5; color: red" -->
+          <!-- sound="src:#fx; autoplay: false; volume: 1; on: playsong" -->
+        <a-sphere id="planet-jupiter" mute-control="soundId: #fx; color: red"
+        class="clickable"
+        scale="11.2 11.2 11.2" position="0 1 -52"
+        animation="property: object3D.rotation.y;
+          to: 360;
+          dur: 4166.67;
+          loop: true;
+          easing: linear"
+        ></a-sphere>
+        <a-sound id="fx" src="#fx-track" ></a-sound>
+      </a-entity>
+
+      <a-entity id="Saturn"
+        animation="property: rotation;
+          to: 0 360 0;
+          loop: true;
+          dur: 1767600;
+          easing: linear">
+        <!-- <a-entity animation="property: object3D.rotation.y;
+            to: 360;
+            dur: 4583.33;
+            loop: true;
+            easing: linear;"> -->
+            <!-- audio-controls="soundIndex: 6; color: pink" -->
+            <!-- sound="src: #ruidos; autoplay: false; volume: 1; on: playsong" -->
+          <a-sphere id="planet-saturn" mute-control="soundId: #ruidos; color: violet"
+          class="clickable"
+          scale="9.5 9.5 9.5" position="0 1 -96"
+          animation="property: object3D.rotation.y;
+              to: 360;
+              dur: 4583.33;
+              loop: true;
+              easing: linear;"
+          ></a-sphere>
+          <a-sound id="ruidos" src="#ruidos-track" sound=""></a-sound>
+          <a-torus id="saturn-ring-1"
+            position="0 1 -96"
+            color="#57524A"
+            segments-tubular="50"
+            radius="2.7"
+            radius-tubular="0.1"
+            rotation="90 0 0"
+            scale="5 5 1"
+            material="blending: none"
+            geometry=""></a-torus>
+          <a-torus id="saturn-ring-2"
+            position="0 1 -96"
+            color="#A29A87"
+            segments-tubular="50"
+            radius="2.2"
+            radius-tubular="0.2"
+            rotation="90 0 0"
+            scale="5 5 1"></a-torus>
+      <!-- </a-entity> -->
+    </a-entity>
     <!-- <a-sky color="black"></a-sky> -->
 
     <!-- camera with look controls-->
@@ -135,7 +317,7 @@
     <!-- <a-link position="0 -25 -10" rotation="0 20 0"
     href="video-espanol.html" title = "Versión Española" image="#sky2"></a-link> -->
 
-    <a-link  class="clickable" position="6 0 -4" rotation="0 -70 0"
+    <a-link  class="clickable" position="30 0 -4" rotation="0 -70 0"
     href="index.html" title="Return to start" image="./assets/img/stellarium-2.png"></a-link>
 
     <!-- <a-text value="Expanda debajo de tus pies tambien."

@@ -13,6 +13,6 @@ init: function() {
     // console.log(cameraEl.getAttribute('position'));
     // console.log(cameraEl.getAttribute('rotation'));
     let dist = camPos.distanceTo(objPos);
-    
+
   }
 });

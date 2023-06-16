@@ -26,7 +26,7 @@ AFRAME.registerComponent('grain', {
     this.el.addEventListener('fusing', async () => {
       await Tone.start();
       if (track.started) {
-        console.log("track was already started");
+        // console.log("track was already started");
         track.stop()
       } else {
         track.start();

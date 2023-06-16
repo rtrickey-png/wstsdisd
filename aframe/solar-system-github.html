@@ -29,6 +29,7 @@
                    loop: true">
         </a-sky>
 
+      <a-entity id="solar-system">
         <a-sphere id="Sun" src="#sun" scale="3 3 3" position="0 1 0" ></a-sphere>
 
         <a-entity id="Mercury"
@@ -93,7 +94,7 @@
             loop: true;
             dur: 112800;
             easing: linear">
-          <a-sphere src="#mars" scale=".5 .5 .5" position="0 1 -15"
+          <a-sphere id="planet-mars" src="#mars" scale=".5 .5 .5" position="0 1 -15"
           animation="property: object3D.rotation.y;
             to: 360;
             dur: 10416.67;
@@ -107,7 +108,7 @@
             loop: true;
             dur: 711600;
             easing: linear">
-          <a-sphere src="#jupiter" scale="11.2 11.2 11.2" position="0 1 -52"
+          <a-sphere id="planet-jupiter" src="#jupiter" scale="11.2 11.2 11.2" position="0 1 -52"
           animation="property: object3D.rotation.y;
             to: 360;
             dur: 4166.67;
@@ -126,7 +127,7 @@
               dur: 4583.33;
               loop: true;
               easing: linear;"> -->
-            <a-sphere src="#saturn" scale="9.5 9.5 9.5" position="0 1 -96"
+            <a-sphere id="planet-saturn" src="#saturn" scale="9.5 9.5 9.5" position="0 1 -96"
             animation="property: object3D.rotation.y;
                 to: 360;
                 dur: 4583.33;
@@ -206,7 +207,7 @@
               easing: linear;"
               ></a-sphere>
         </a-entity> -->
-
+      </a-entity>
         <a-light type="point" color="" intensity="1" position="0 3 0"></a-light>
 
 

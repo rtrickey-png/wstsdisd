@@ -6,19 +6,9 @@ const disto = new Tone.Distortion(0.7).toDestination();
 
 AFRAME.registerComponent('distortion-intv', {
   init: function () {
-    // console.log(disto);
-    // console.log(this.data);
-
-    // console.log(grainComponent);
-
     this.obj = this.el;
     this.cam = document.querySelector("#camera");
     this.player = document.querySelector('[grain]').components.grain.output;
-    // this.scaler = this.el.components["scaler"];
-    // console.log(this.el.components["scaler"].scaleToRange(40));
-    // console.log(document.querySelector('[scaler]').components)
-    console.log(this.player);
-    // console.log(this.scaler);
     this.player.connect(disto);
 
   },

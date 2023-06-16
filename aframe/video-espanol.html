@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Spanish Version of Poem</title>
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="./scripts/play-pause-controls-agile.js"></script>
     <script src="./scripts/link-controls.js"></script>
   </head>
@@ -61,8 +61,7 @@
     <a-entity id="vid-controls"
       position="5 -555 -95"
       animation="property: position; to: 5 2 -95; dur: 30000; easing: linear; loop: false">
-      <a-video id="vid-esp"
-        show-when-loaded
+      <a-video id="vid"
         src="#vid-esp"
         width="160"
         height="90"
@@ -72,9 +71,24 @@
       ></a-video>
     </a-entity>
 
+    <a-entity id="scene-instr"
+      geometry="primitive: plane; height: 1.5; width: 8"
+      material="color: black"
+      rotation="0 0 0"
+      scale="15 15 1"
+      position="0 0 -195"
+      anchor="center"
+      align="center">
+      <a-text value="Gracias por elegir. Por favor, espere mientras el video carga."
+        align="center"
+        width="8"
+        position="0 0 1">
+      </a-text>
+    </a-entity>
+
     <!-- TODO: make this appear when video has played through -->
     <a-link  class="clickable" position="6 0 0" rotation="0 90 0"
-    href="wstsdisd.html" title="Volver a San Diego" image="#sky-sd"></a-link>
+    href="wstsdisd.html" title="Toca la cancion" image="#sky-sd"></a-link>
 
       </a-scene>
   </body>
