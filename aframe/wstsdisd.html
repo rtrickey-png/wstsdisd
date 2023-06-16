@@ -3,24 +3,15 @@
 <head>
   <title>Who Set the Sun Down in San Diego?</title>
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-  <!-- <script src="https://unpkg.com/tone@14.7.77/build/Tone.js"></script> -->
-  <script src="./scripts/play-pause-controls.js"></script>
-  <!-- <script src="./scripts/grain.js"></script> -->
-  <script src="./scripts/show-when-loaded.js"></script>
   <script src="./scripts/link-controls.js"></script>
-  <!-- <script src="./components/synth.js"></script> -->
-  <!-- <script src="./scripts/distortion-intv.js"></script> -->
   <script src="./components/mute-control.js"></script>
   <script src="./components/start-stop-song.js"></script>
 </head>
 <body>
   <a-scene >
-    <a-assets>
-      <!-- <img id="wood1" src="./assets/img/wood.png" alt=""/>
-      <img id="wood2" src="./assets/img/wood2.jpg" alt=""/> -->
+    <a-assets timeout="3000">
+      <img id="sky1" src="./assets/img/stellarium-2.jpg" alt="sky from Barcelona 7-4-2022"/>
       <img id="sky-sd" src="./assets/img/stellarium-sd-03-08-22.png" alt="sky from San Diego 8-3-2022"/>
-      <!-- <audio id="intro" preload="auto" loop="true" src="./assets/sound/wstsdisd-intro-3-22-23.mp3"></audio> -->
-      <!-- <audio id="aud-trees" preload="auto" autoplay="false" loop="true" src="./assets/sound/el viento.mp3"></audio> -->
       <audio id="drum-track" autoplay="false" preload="auto" loop="false" src="./assets/sound/wstsdisd/DRUMS.mp3"></audio>
       <audio id="bass-track" autoplay="false" preload="auto" loop="false" src="./assets/sound/wstsdisd/BASS.mp3"></audio>
       <audio id="vox-track" autoplay="false" preload="auto" loop="false" src="./assets/sound/wstsdisd/VOCALS.mp3"></audio>
@@ -28,8 +19,6 @@
       <audio id="synths-track" autoplay="false" preload="auto" loop="false" src="./assets/sound/wstsdisd/SYNTHS.mp3"></audio>
       <audio id="fx-track" autoplay="false" preload="auto" loop="false" src="./assets/sound/wstsdisd/FX.mp3"></audio>
       <audio id="ruidos-track" autoplay="false" preload="auto" loop="false" src="./assets/sound/wstsdisd/RUIDOS.mp3"></audio>
-      <!-- <audio id="aud-rest" preload="auto" loop="true" src="./assets/sound/restaurante osaka.mp3"></audio> -->
-      <!-- <a-asset-item id="sun" src="./assets/obj/the_sun/scene.gltf"></a-asset-item> -->
     </a-assets>
 
     <!-- background image -->
@@ -40,25 +29,6 @@
                    dur:600000;
                    loop: true"></a-sky>
     </a-entity>
-
-    <!-- sun model -->
-    <!-- <a-entity audio-visualizer="src:#intro" gltf-model="#sun" position="0 3 0"></a-entity> -->
-
-    <!-- lighting -> test -->
-    <!-- <a-entity light="type: directional; color: #ffffff; intensity:0.5"
-              position="0 3s 0"></a-entity> -->
-
-    <!-- box to test synth patch -->
-    <!-- <a-box id="testbox" synth="note: A4" class="clickable" position="-1 0.5 -3" rotation="0 90 0" color="#4CC3D9"
-      animation="property: opacity; from: 0.5; to: 1; dur: 500; startEvents:click"
-      sound="src: #intro; autoplay: true">
-    </a-box>
-
-    <a-box id="playerbox" grain distortion-intv scaler="inMin: 0; inMax: 10; outMin: 0; outMax:1"
-      class="clickable" position="-3 0.5 -3" rotation="0 90 0" color="#9CC3D9"
-      animation="property: opacity; from: 0.5; to: 1; dur: 500; startEvents:click"
-      sound="src: #intro; autoplay: false">
-    </a-box> -->
 
     <a-entity position="0 5 -15">
         <a-box id="control-cube" start-stop-song class="clickable"
@@ -247,92 +217,12 @@
   		</a-entity>
   	</a-entity>
 
-    <!-- table -->
-    <!-- <a-entity id="table"
-      animation="property: object3D.scale.z;
-        to: 35;
-        loop: true;
-        dur: 600000;
-        elasticity: 20;
-        easing: easeInSine;"
-      position="0 -33 0">
-      <a-cylinder
-        src="#sky2"
-        rotaion="0 45 0"
-        position="-2.6 -10 0"
-        segments-radial="4"
-        width="40"
-        length="30"
-        height="2"
-        scale="70 1 50"
-        material=""
-        geometry="primitive: box"
-        rotation=""></a-cylinder>
-      <a-cylinder
-        position="-33 -30 -22"
-        rotation="0 45 0"
-        radius="4"
-        segments-radial="4"
-        src="#wood2"
-        scale=".4 40 .4"
-        geometry=""></a-cylinder>
-      <a-cylinder
-        position="28 -30 -22"
-        rotation="0 45 0"
-        radius="4"
-        segments-radial="4"
-        src="#wood2"
-        scale=".4 40 .4"
-        geometry=""></a-cylinder>
-      <a-cylinder
-        position="28 -30 22"
-        rotation="0 -45 0"
-        radius="4"
-        segments-radial="4"
-        src="#wood2"
-        scale=".4 40 .4"
-        geometry=""></a-cylinder>
-      <a-cylinder
-        position="-33 -30 22"
-        rotation="0 45 0"
-        radius="4"
-        segments-radial="4"
-        src="#wood2"
-        scale=".4 40 .4"
-        geometry=""></a-cylinder>
-    </a-entity> -->
 
-    <!-- <a-text value="Around you spins the night sky in Barcelona\n the first night of my summer classes\n7-4-2022"
-    text="align: center"
-    rotation="0 90 0"
-    position="-30 5 0"
-    scale="3 3 1">
-    </a-text> -->
-
-    <!-- link components for user navigation -->
-
-    <!-- <a-link class="clickable" position="6 1 4" rotation="0 70 0"
-    href="video-ingles.html" title="English Version" image="./assets/img/stellarium-bcn-18-07-22.png"></a-link> -->
-
-    <!-- <a-link position="0 -25 -10" rotation="0 20 0"
-    href="video-espanol.html" title = "Versión Española" image="#sky2"></a-link> -->
-
-    <a-link  class="clickable" position="30 0 -4" rotation="0 -70 0"
-    href="index.html" title="Return to start" image="./assets/img/stellarium-2.png"></a-link>
-
-    <!-- <a-text value="Expanda debajo de tus pies tambien."
-    text="align: center"
-    rotation="0 -90 0"
-    position="30 5 0"
-    scale="3 3 1">
-        </a-text> -->
-
-
-    <!-- <a-sound id="track" src="#intro" volume="1" autplay="true" position="0 0 0"></a-sound> -->
-    <!-- ambient sound files -->
-    <!-- <a-sound id="tree-amb" src="#aud-trees" volume=".6" autoplay="true" position="0 20 0"></a-sound> -->
-    <!-- <a-sound id="rest-amb" src="#aud-rest" volume=".6" autoplay="true" position="0 -10 0"></a-sound> -->
-
+    <a-entity id="link-home" position="12 -100 0" animation="property: position; to: 12 0 0; dur: 5000; easing: linear; loop: false">
+      <a-link class="clickable"  rotation="0 -90 0"
+      href="index.html" title="Return to Start" scale="2 2 2" image="#sky1"></a-link>
+      <a-text align="center" position="0 -3 0" value="Note: this will stop playback!" rotation="0 -90 0" scale="3 3 1"></a-text>
+    </a-entity>
   </a-scene>
 </body>
 </html>

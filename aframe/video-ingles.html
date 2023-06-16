@@ -8,7 +8,7 @@
   </head>
   <body>
     <a-scene>
-      <a-assets>
+      <a-assets timeout="3000">
         <img id="sky-ing" src="./assets/img/stellarium-bcn-18-07-22.png" alt="Barcelona sky the night of July 18th 2022"/>
         <img id="sky-sd" src="./assets/img/stellarium-sd-03-08-22.png" alt="Sky in San Diego upon my return"/>
         <video id="vid-ing" autoplay="false" preload="auto" loop="false"  src="./assets/video/esp-comp.mp4"></video>
@@ -92,7 +92,7 @@
 
       <!-- link to song world -->
       <a-link  class="clickable" position="-30 0 0" rotation="0 -70 0"
-      href="wstsdisd.html" title="Play the song" image="#sky-sd"></a-link>
+      href="wstsdisd.html" title="Who Set the Sun Down in San Diego?" image="#sky-sd"></a-link>
 
       </a-scene>
   </body>

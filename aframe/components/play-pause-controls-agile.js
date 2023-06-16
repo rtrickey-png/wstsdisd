@@ -9,12 +9,13 @@ AFRAME.registerComponent('play-pause-controls-agile', {
     let audio = (video.components.sound);
 
     let ctrl = document.querySelector('#controls');
-    console.log(ctrl);
-    // let audio = document.querySelector('#audio').components.sound;
-    // console.log(audio);
-    // console.log(aud.el)
-    // let instr = document.querySelector("#instructions");
-    // console.log(instr);
+
+    // pause video and sound and set to start
+    video.pause();
+    audio.pauseSound();
+
+    video.currentTime = 0.1;
+    audio.currentTime = 0.1;
 
     ctrl.addEventListener('click', function(evt) {
       // if (!vidEsp.canplaythrough) {

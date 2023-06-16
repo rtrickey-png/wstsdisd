@@ -9,7 +9,7 @@
   <body>
     <a-scene>
     <!-- can try out timeout="10000" tag -->
-      <a-assets>
+      <a-assets timeout="3000">
         <img id="sky-esp" src="./assets/img/stellarium-bcn-29-07-22.png" alt="Barcelona sky the night of July 29th"/>
         <img id="sky-sd" src="./assets/img/stellarium-sd-03-08-22.png" alt="Sky in San Diego upon my return"/>
         <video id="vid-esp" preload="auto" loop="false"  src="./assets/video/ing-comp.mp4"></video>
@@ -87,8 +87,8 @@
     </a-entity>
 
     <!-- TODO: make this appear when video has played through -->
-    <a-link  class="clickable" position="6 0 0" rotation="0 90 0"
-    href="wstsdisd.html" title="Toca la cancion" image="#sky-sd"></a-link>
+    <a-link  class="clickable" position="30 0 0" rotation="0 90 0"
+    href="wstsdisd.html" title="Who Set the Sun Down in San Diego?" image="#sky-sd"></a-link>
 
       </a-scene>
   </body>
