@@ -11,8 +11,8 @@
       <a-assets timeout="3000">
         <img id="sky-ing" src="./assets/img/stellarium-bcn-18-07-22.png" alt="Barcelona sky the night of July 18th 2022"/>
         <img id="sky-sd" src="./assets/img/stellarium-sd-03-08-22.png" alt="Sky in San Diego upon my return"/>
-        <video id="vid-ing" autoplay="false" preload="auto" loop="false"  src="./assets/video/esp-comp.mp4"></video>
-        <audio id="aud-ing" autoplay="false" preload="auto" loop="false" src="./assets/sound/08012023_poema_ing.mp3"></audio>
+        <video id="vid-ing" preload="auto" loop="false"  src="./assets/video/esp-comp.mp4"></video>
+        <audio id="aud-ing" preload="auto" loop="false" src="./assets/sound/08012023_poema_ing.mp3"></audio>
       </a-assets>
 
       <a-entity id="rotating-sky">
@@ -68,7 +68,7 @@
           height="90"
           position = "0 2 -90"
           rotation="0 0 0"
-          sound="src: #aud-ing; refDistance: 33; rolloffFactor: 3"
+          sound="src: #aud-ing; refDistance: 33; rolloffFactor: 3; autoplay: false"
           autoplay="false"
         ></a-video>
         <!-- <a-sound id="audio" src="#aud-ing" refDistance="33" rolloffFactor="3"><a-sound> -->

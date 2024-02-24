@@ -4,21 +4,14 @@
   <title>Welcome, Traveler</title>
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
   <script src="https://unpkg.com/tone@14.7.77/build/Tone.js"></script>
-  <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
   <script src="./components/synth.js"></script>
   <script src="./components/reverb.js"></script>
-  <script src="./scripts/distortion.js"></script>
-  <script src="./scripts/play-pause-controls.js"></script>
-  <script src="./scripts/show-when-loaded.js"></script>
   <script src="./scripts/link-controls.js"></script>
   <script src="./scripts/camera-distance.js"></script>
-  <!-- <script src="./scripts/webaudio.js"></script> -->
 </head>
 <body>
   <a-scene>
     <a-assets>
-      <!-- <img id="wood1" src="./assets/img/wood.png" alt=""/>
-      <img id="wood2" src="./assets/img/wood2.jpg" alt=""/> -->
       <img id="sky1" src="./assets/img/stellarium-2.jpg" alt="sky from Barcelona 7-4-2022"/>
       <img id="sky-ing" src="./assets/img/stellarium-bcn-18-07-22.png" alt="Barcelona sky the night of July 18th 2022"/>
       <img id="sky-esp" src="./assets/img/stellarium-bcn-29-07-22.png" alt="Barcelona sky the night of July 29th"/>
@@ -283,8 +276,12 @@
     scale="3 3 1">
     </a-text> -->
 
-    <a-text value="The Universe is yours to explore."
+    <a-text value="CAUTION: Lower computer volume before hovering over planets!"
       text="align: center" rotation="13 0 0" position="0 10 -20" scale="4 4 1">
+    </a-text>
+
+    <a-text value="The Universe is yours to explore."
+      text="align: center" rotation="13 0 0" position="0 6 -20" scale="4 4 1">
     </a-text>
 
     <a-text value="Use WASD keys to move forward, left, right, and backward;\n click and drag to look around."
@@ -307,7 +304,7 @@
     </a-entity>
     <!-- <a-link position="0 -25 -10" rotation="0 20 0"
     href="video-espanol.html" title = "Versión Española" image="#sky2"></a-link> -->
-<!-- animation="property: position; to: 30 0 0; dur: 30000; easing: linear; loop: false"> -->
+<!-- <animation="property: position; to: 30 0 0; dur: 30000; easing: linear; loop: false"> -->
     <a-entity id="link-esp" position="30 -100 0" animation="property: position; to: 30 0 0; dur: 5000; easing: linear; loop: false">
       <a-link class="clickable"  rotation="0 -90 0"
       href="video-espanol.html" title="Spanish Version" scale="2 2 2" image="#sky-esp"></a-link>

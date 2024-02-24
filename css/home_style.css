@@ -17,6 +17,16 @@ body {
 
 }
 
+.purple-button {
+  background-color: #40A2D8; /* Adjusted shade of purple */
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
 #main-header {
   /* midnight purple */
   background-color: #40128B;
@@ -51,6 +61,7 @@ body {
   min-height: 300px; /*makes responsive*/
   margin-bottom: 30px;
   text-align: center;
+  display: flex
 }
 
 #showcase h1 {

@@ -38,26 +38,18 @@ AFRAME.registerComponent('synth', {
   },
 
   init: function () {
-    // attach an even listener to element for fuse from cursor
-    // Tone.start()
     this.synthComponent = synth;
     let randomNoteLength = 1;
-    console.log(randomNoteLength);
+
+    // attach an even listener to element for fuse from cursor
     this.el.addEventListener('fusing', async () => {
       await Tone.start()
-      console.log('audio is ready')
+      // select a random note length
       randomNoteLength = Math.floor(Math.random() * 2.5 + 1);
-      console.log(randomNoteLength);
+      // play note
       synth.triggerAttackRelease(this.data.note, randomNoteLength);
     })
   },
-
-  // a new function to trigger our synth
-  // trigger: function () {
-    // tone.js function to trigger synth with given parameters
-    // Tone.start();
-    // synth.triggerAttackRelease(this.data.note, this.data.duration)
-  // },
 
   update: function () {
     // Do something when component's data is updated.
